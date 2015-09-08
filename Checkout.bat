@@ -2,6 +2,9 @@
 
 title Checkout Utility
 
+:: define a variable containing a single backspace character
+for /f %%A in ('"prompt $H &echo on &for %%B in (1) do rem"') do set BS=%%A
+
 :: =================================================
 :: Detect OS 
 :: =================================================
@@ -45,11 +48,14 @@ if not "x!versionOutput:Version 5.1=!"=="x%versionOutput%" (
 endlocal
 goto _error
 
+:: =================================================
+:: Intro
+:: =================================================
 :_select
 echo.
 echo   The checkout utility will run through the checkout procedures
 echo.
-pause
+set /p var=%BS%  Press Enter to Continue:  
 cls
 goto _eject
 
@@ -62,24 +68,7 @@ echo   ------ CDs are removed ------
 echo   Ejecting CD/DVD Drive:
 echo.
 %myfiles%\wizmo.exe quiet open
-pause 
-cls
-goto _activate
-
-:: =================================================
-:: Windows Activation
-:: =================================================
-:_activate
-echo.
-echo   ------ OS and Office activated ------
-echo   Checking OS status:
-echo.
-if "%operatingSystem%"=="xp" (
-    start oobe/msoobe /a
-) else ( 
-    start slmgr.vbs -xpr
-)
-pause
+set /p var=%BS%  Press Enter to Continue:   
 cls
 goto _update
 
@@ -99,85 +88,7 @@ if "%operatingSystem%"=="ten" (
 ) else ( 
     wuapp.exe
 )
-echo.
-pause 
-cls
-goto _items
-
-:: =================================================
-:: Check for User's Items
-:: =================================================
-:_items
-cls
-echo.
-echo   ------ User's items collected (Power, CDs, etc.) ------
-echo   Have you collected all of the users items?
-set /p select=(yes or no):
-echo.
-if "%select%"=="yes" echo   Thanks for checking!
-if "%select%"=="YES" echo   Thanks for checking!
-if "%select%"=="no" echo   Please gather all user's items.
-if "%select%"=="NO" echo   Please gather all user's items.
-echo.
-pause
-cls
-goto _java
-
-:: =================================================
-:: Check Java and Flash
-:: =================================================
-:_java
-echo.
-echo   ------ Browsers working: Search, Flash, Java ------
-echo   Flash - Launching a test video:
-@start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://youtu.be/SDmbGrQqWog
-echo.
-pause
-cls
-
-echo.
-echo   ------ Browsers working: Search, Flash, Java ------
-echo   Java - Launching java verification:
-@start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
-echo.
-pause
-cls
-goto _graphics
-
-:: =================================================
-:: Check Graphics and Sound
-:: =================================================
-:_graphics
-echo.
-echo   ------ Drivers Installed, Graphics and Sound Working ------
-echo   Graphics - Getting Screen Resolution:
-echo.
-%myfiles%\Qres.exe /S | find "bits"
-pause
-cls
-
-echo.
-echo   ------ Drivers Installed, Graphics and Sound Working ------
-echo   Sound - Playing a test sound:
-%myfiles%\sWavPlayer.exe %myfiles%\marimba.wav
-echo.
-echo   Ensure that you were able to hear the sample sound.
-echo.
-pause
-cls
-goto _drivers
-
-:: =================================================
-:: Check Drivers
-:: =================================================
-:_drivers
-echo.
-echo   ------ Drivers Installed, Graphics and Sound Working ------
-echo   Drivers - Launching Device Manager:
-echo.
-mmc devmgmt.msc
-echo.
-pause
+set /p var=%BS%  Press Enter to Continue:   
 cls
 goto _virus
 
@@ -197,20 +108,111 @@ if EXIST "%ProgramFiles%\Microsoft Security Client\" (
         echo   Microsoft Security Essentials is NOT installed!
     )
 echo.
-pause
+set /p var=%BS%  Press Enter to Continue:  
 cls
-goto _net
+goto _items
 
 :: =================================================
-:: Check Internet Connections
+:: Check for User's Items
 :: =================================================
-:_net
+:_items
+cls
 echo.
-echo   ------ Wireless and/or Wired network working ------"
-echo   Launching Network Connections:"
+echo   ------ User's items collected (Power, CDs, etc.) ------
+echo   Have you collected all of the users items?
+set /p select=(yes or no):
 echo.
-ncpa.cpl
-pause
+if "%select%"=="yes" echo   Thanks for checking!
+if "%select%"=="YES" echo   Thanks for checking!
+if "%select%"=="no" echo   Please gather all user's items.
+if "%select%"=="NO" echo   Please gather all user's items.
+echo.
+set /p var=%BS%  Press Enter to Continue:  
+cls
+goto _flash
+
+:: =================================================
+:: Check Flash
+:: =================================================
+:_flash
+echo.
+echo   ------ Browsers working: Search, Flash, Java ------
+echo   Java - Launching java verification:
+@start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
+echo.
+set /p var=%BS%  Press Enter to Continue:  
+cls
+goto _java
+
+:: =================================================
+:: Check Java
+:: =================================================
+:_java
+echo.
+echo   ------ Browsers working: Search, Flash, Java ------
+echo   Flash - Launching a test video:
+@start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://youtu.be/SDmbGrQqWog
+echo.
+set /p var=%BS%  Press Enter to Continue:  
+cls
+goto _activate
+
+:: =================================================
+:: Windows Activation
+:: =================================================
+:_activate
+echo.
+echo   ------ OS and Office activated ------
+echo   Checking OS status:
+echo.
+if "%operatingSystem%"=="xp" (
+    start oobe/msoobe /a
+) else ( 
+    start slmgr.vbs -xpr
+)
+set /p var=%BS%  Press Enter to Continue:  
+cls
+goto _drivers
+
+:: =================================================
+:: Check Drivers
+:: =================================================
+:_drivers
+echo.
+echo   ------ Drivers Installed, Graphics and Sound Working ------
+echo   Drivers - Launching Device Manager:
+echo.
+mmc devmgmt.msc
+echo.
+set /p var=%BS%  Press Enter to Continue:  
+cls
+goto _graphics
+
+:: =================================================
+:: Check Graphics
+:: =================================================
+:_graphics
+echo.
+echo   ------ Drivers Installed, Graphics and Sound Working ------
+echo   Graphics - Getting Screen Resolution:
+echo.
+%myfiles%\Qres.exe /S | find "bits"
+set /p var=%BS%  Press Enter to Continue:  
+cls
+goto _sound
+
+:: =================================================
+:: Check Sound
+:: =================================================
+:_sound
+echo.
+echo   ------ Drivers Installed, Graphics and Sound Working ------
+echo   Sound - Playing a test sound:
+%myfiles%\sWavPlayer.exe %myfiles%\marimba.wav
+echo.
+echo   Ensure that you were able to hear the sample sound.
+echo.
+set /p var=%BS%  Press Enter to Continue:  
 cls
 goto _backup
 
@@ -218,7 +220,6 @@ goto _backup
 :: Backup
 :: =================================================
 :_backup
-cls
 echo.
 echo   Please check the Data Backup section on the form, is it complete?
 echo.
@@ -228,15 +229,31 @@ if "%select%"=="yes" echo   Thanks for checking!
 if "%select%"=="YES" echo   Thanks for checking!
 if "%select%"=="no" echo   Please go over and ensure each step is complete.
 if "%select%"=="NO" echo   Please go over and ensure each step is complete.
-goto _backup 
+set /p var=%BS%  Press Enter to Continue:  
+cls
+goto _network
+
+:: =================================================
+:: Check Internet Connections
+:: =================================================
+:_network
+echo.
+echo   ------ Wireless and/or Wired network working ------"
+echo   Launching Network Connections:"
+echo.
+ncpa.cpl
+set /p var=%BS%  Press Enter to Continue:  
+cls
+goto _restart
 
 :: =================================================
 :: Restart Computer
 :: =================================================
+:_restart
 echo.
 echo   Please re-start the computer to ensure it boots up properly.
 echo.
-pause
+set /p var=%BS%  Press Enter to Continue:  
 cls
 
 goto _done
@@ -246,7 +263,7 @@ goto _done
 :: =================================================
 :_done
 echo.
-echo  Finished!
+echo   The checkout is now complete.`n"
 echo.
 
 set /p foo="Press ENTER to exit."
@@ -262,7 +279,7 @@ exit
 
 :_error
 echo   No Valid OS Detected!
-pause
+set /p var=%BS%  Press Enter to Continue:  
 goto _end
 
 :_mse8
@@ -272,6 +289,6 @@ wmic /locale:ms_409 service where (name="WinDefend") get state /value | findstr 
 ) else (
         echo "  Windows Defender (MSE) is NOT running!"
 )
-pause
+set /p var=%BS%  Press Enter to Continue:  
 cls
 goto _net
