@@ -112,10 +112,10 @@ echo   Are all of the user's checked in items here? (Power adapter, bag, CD's)
 echo.
 set /p select=(yes or no):
 echo.
-if "%select%"=="yes" echo Thanks for checking!
-if "%select%"=="YES" echo Thanks for checking!
-if "%select%"=="no" echo Please gather all user's items.
-if "%select%"=="NO" echo Please gather all user's items.
+if "%select%"=="yes" echo   Thanks for checking!
+if "%select%"=="YES" echo   Thanks for checking!
+if "%select%"=="no" echo   Please gather all user's items.
+if "%select%"=="NO" echo   Please gather all user's items.
 echo.
 pause
 cls
@@ -152,10 +152,10 @@ echo.
 pause
 cls
 echo.
-echo Playing a sample audio sound . . .
+echo   Playing a sample audio sound . . .
 %myfiles%\sWavPlayer.exe %myfiles%\marimba.wav
 echo.
-echo Ensure that you were able to hear the sample sound.
+echo   Ensure that you were able to hear the sample sound.
 echo.
 pause
 cls
@@ -168,7 +168,7 @@ goto _drivers
 echo.
 echo   Check that all drivers are installed . . .
 echo.
-echo                Launching Device Manager . . .
+echo   Launching Device Manager . . .
 echo.
 mmc devmgmt.msc
 echo.
@@ -188,7 +188,7 @@ if "%operatingSystem%"=="eight" goto _mse8
 if EXIST "%ProgramFiles%\Microsoft Security Client\" (
         echo   Microsoft Security Essentials is installed!
     )   else (
-        echo Microsoft Security Essentials is NOT installed! Check to see if the computer has anti-virus software installed. 
+        echo   Microsoft Security Essentials is NOT installed!
     )
 echo.
 pause
@@ -219,10 +219,10 @@ echo   Please check the Data Backup section on the form, is it complete?
 echo.
 set /p select=(yes or no):
 echo.
-if "%select%"=="yes" echo Thanks for checking! && goto _continue2
-if "%select%"=="YES" echo Thanks for checking! && goto _continue2
-if "%select%"=="no" echo Please go over and ensure each step is complete. && goto _continue2
-if "%select%"=="NO" echo Please go over and ensure each step is complete. && goto _continue2
+if "%select%"=="yes" echo   Thanks for checking! && goto _continue2
+if "%select%"=="YES" echo   Thanks for checking! && goto _continue2
+if "%select%"=="no" echo   Please go over and ensure each step is complete. && goto _continue2
+if "%select%"=="NO" echo   Please go over and ensure each step is complete. && goto _continue2
 goto _backup 
 
 :: =================================================
@@ -295,16 +295,16 @@ rmdir /s /q "../checkout"
 exit
 
 :_error
-echo No Valid OS Detected!
+echo   No Valid OS Detected!
 pause
 goto _end
 
 :_mse8
 wmic /locale:ms_409 service where (name="WinDefend") get state /value | findstr State=Running
     if %ErrorLevel% EQU 0 (
-        echo "Windows Defender (MSE) is Running!"
+        echo "  Windows Defender (MSE) is Running!"
 ) else (
-    echo "Windows Defender (MSE) is NOT running!, check if another AV program is running."
+        echo "  Windows Defender (MSE) is NOT running!"
 )
 pause
 cls
