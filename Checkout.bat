@@ -49,9 +49,6 @@ goto _error
 echo.
 echo   The Checkout Utility will run through the checkout procedures.
 echo.
-echo.
-echo.
-echo.
 pause
 cls
 goto _eject
@@ -61,10 +58,7 @@ goto _eject
 :: =================================================
 :_eject
 echo.
-echo Please check the optical drive for any PE CD's . . .
-echo.
-echo.
-echo.
+echo   Please check the optical drive for any PE CD's . . .
 echo.
 %myfiles%\wizmo.exe quiet open
 pause 
@@ -76,11 +70,7 @@ goto _activate
 :: =================================================
 :_activate
 echo.
-echo.
-echo Checking Activation Status . . .
-echo.
-echo.
-echo.
+echo   Checking Activation Status . . .
 echo.
 if "%operatingSystem%"=="xp" (
     start oobe/msoobe /a
@@ -96,12 +86,9 @@ goto _update
 :: =================================================
 :_update
 echo.
-echo Check for Windows Updates . . .
+echo   Check for Windows Updates . . .
 echo.
-echo.
-echo.
-echo.
-echo                Launching Windows Update . . . 
+echo   Launching Windows Update . . . 
 if "%operatingSystem%"=="xp" (
     @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" update.microsoft.com
 ) 
@@ -110,9 +97,6 @@ if "%operatingSystem%"=="ten" (
 ) else ( 
     wuapp.exe
 )
-echo.
-echo.
-echo.
 echo.
 pause 
 cls
@@ -124,37 +108,27 @@ goto _items
 :_items
 cls
 echo.
-echo Are all of the user's checked in items here? (Power adapter, bag, CD's)
-echo.
-echo.
+echo   Are all of the user's checked in items here? (Power adapter, bag, CD's)
 echo.
 set /p select=(yes or no):
 echo.
-echo.
-echo.
-if "%select%"=="yes" echo Thanks for checking! && goto _continue
-if "%select%"=="YES" echo Thanks for checking! && goto _continue
-if "%select%"=="no" echo Please gather all user's items. && goto _continue
-if "%select%"=="NO" echo Please gather all user's items. && goto _continue
-echo.
+if "%select%"=="yes" echo Thanks for checking!
+if "%select%"=="YES" echo Thanks for checking!
+if "%select%"=="no" echo Please gather all user's items.
+if "%select%"=="NO" echo Please gather all user's items.
 echo.
 pause
 cls
 goto _java
-
-
 
 :: =================================================
 :: Check Java and Flash
 :: =================================================
 :_java
 echo.
-echo Test browsers for working Java and Flash . . .
+echo   Test browsers for working Java and Flash . . .
 echo.
-echo.
-echo.
-echo.
-echo                Launching Internet Explorer . . .
+echo   Launching Internet Explorer . . .
 echo.
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://youtu.be/SDmbGrQqWog
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
@@ -167,30 +141,19 @@ goto _graphics
 :: =================================================
 :_graphics
 echo.
-echo Checking Graphics and Sound . . . 
+echo   Checking Graphics and Sound . . . 
 echo.
-echo.
-echo.
-echo The Current Screen Resolution is :
-echo.
-echo.
-echo.
+echo   The Current Screen Resolution is :
 echo.
 %myfiles%\Qres.exe /S | find "bits"
 echo.
-echo.
-echo.
-echo.
-echo Doublecheck that this is the correct resolution for this display.
-echo.
+echo   Doublecheck that this is the correct resolution for this display.
 echo.
 pause
 cls
 echo.
-echo.
 echo Playing a sample audio sound . . .
 %myfiles%\sWavPlayer.exe %myfiles%\marimba.wav
-echo.
 echo.
 echo Ensure that you were able to hear the sample sound.
 echo.
@@ -203,29 +166,22 @@ goto _drivers
 :: =================================================
 :_drivers
 echo.
-echo Check that all drivers are installed . . .
-echo.
-echo.
+echo   Check that all drivers are installed . . .
 echo.
 echo                Launching Device Manager . . .
-echo.
-echo.
 echo.
 mmc devmgmt.msc
 echo.
 pause
 cls
-goto_virus
+goto _virus
 
 :: =================================================
 :: Check MSSE and Defender
 :: =================================================
 :_virus
 echo.
-echo Checking if Microsoft Security Essentials is installed . . .
-echo.
-echo.
-echo.
+echo   Checking if Microsoft Security Essentials is installed . . .
 echo.
 if "%operatingSystem%"=="eight" goto _mse8
     
@@ -234,8 +190,6 @@ if EXIST "%ProgramFiles%\Microsoft Security Client\" (
     )   else (
         echo Microsoft Security Essentials is NOT installed! Check to see if the computer has anti-virus software installed. 
     )
-echo.
-echo.
 echo.
 pause
 cls
@@ -246,14 +200,9 @@ goto _net
 :: =================================================
 :_net
 echo.
-echo Ensure wireless/wired networking is operational.
+echo   Ensure wireless/wired networking is operational.
 echo.
-echo.
-echo.
-echo.
-echo                Launching Network Connections . . . 
-echo.
-echo.
+echo   Launching Network Connections . . . 
 echo.
 ncpa.cpl
 pause
@@ -266,15 +215,9 @@ goto _backup
 :_backup
 cls
 echo.
-echo Please check the Data Backup section on the form, is it complete?
-echo.
-echo.
-echo.
+echo   Please check the Data Backup section on the form, is it complete?
 echo.
 set /p select=(yes or no):
-echo.
-echo.
-echo.
 echo.
 if "%select%"=="yes" echo Thanks for checking! && goto _continue2
 if "%select%"=="YES" echo Thanks for checking! && goto _continue2
@@ -318,8 +261,6 @@ if EXIST "%USERPROFILE%\Desktop\defaultprograms.exe" (
     del /F "%USERPROFILE%\Desktop\defaultprograms.exe"
     )
 echo.
-echo.
-echo.
 pause
 cls
 
@@ -327,9 +268,7 @@ cls
 :: Restart Computer
 :: =================================================
 echo.
-echo Please re-start the computer to ensure it boots up properly.
-echo.
-echo.
+echo   Please re-start the computer to ensure it boots up properly.
 echo.
 pause
 cls
