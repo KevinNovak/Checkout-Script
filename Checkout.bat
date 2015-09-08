@@ -108,9 +108,9 @@ rem Wait 800
 if "%operatingSystem%"=="eight" goto _mse8
     
 if EXIST "%ProgramFiles%\Microsoft Security Client\" (
-        echo   Microsoft Security Essentials is installed!
+        echo     Microsoft Security Essentials is installed!
     )   else (
-        echo   Microsoft Security Essentials is NOT installed!
+        echo     Microsoft Security Essentials is NOT installed!
     )
 rem Wait 800
 echo.
