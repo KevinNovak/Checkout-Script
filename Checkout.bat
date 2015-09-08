@@ -111,7 +111,7 @@ goto _items
 cls
 echo.
 echo   ------ User's items collected (Power, CDs, etc.) ------
-echo.
+echo   Have you collected all of the users items?
 set /p select=(yes or no):
 echo.
 if "%select%"=="yes" echo   Thanks for checking!
@@ -138,7 +138,6 @@ cls
 echo.
 echo   ------ Browsers working: Search, Flash, Java ------
 echo   Java - Launching java verification:
-echo.
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
 echo.
 pause
@@ -150,18 +149,16 @@ goto _graphics
 :: =================================================
 :_graphics
 echo.
-echo   Checking Graphics and Sound . . . 
-echo.
-echo   The Current Screen Resolution is :
+echo   ------ Drivers Installed, Graphics and Sound Working ------
+echo   Graphics - Getting Screen Resolution:
 echo.
 %myfiles%\Qres.exe /S | find "bits"
-echo.
-echo   Doublecheck that this is the correct resolution for this display.
-echo.
 pause
 cls
+
 echo.
-echo   Playing a sample audio sound . . .
+echo   ------ Drivers Installed, Graphics and Sound Working ------
+echo   Sound - Playing a test sound:
 %myfiles%\sWavPlayer.exe %myfiles%\marimba.wav
 echo.
 echo   Ensure that you were able to hear the sample sound.
@@ -175,9 +172,8 @@ goto _drivers
 :: =================================================
 :_drivers
 echo.
-echo   Check that all drivers are installed . . .
-echo.
-echo   Launching Device Manager . . .
+echo   ------ Drivers Installed, Graphics and Sound Working ------
+echo   Drivers - Launching Device Manager:
 echo.
 mmc devmgmt.msc
 echo.
@@ -210,9 +206,8 @@ goto _net
 :: =================================================
 :_net
 echo.
-echo   Ensure wireless/wired networking is operational.
-echo.
-echo   Launching Network Connections . . . 
+echo   ------ Wireless and/or Wired network working ------"
+echo   Launching Network Connections:"
 echo.
 ncpa.cpl
 pause
@@ -229,50 +224,11 @@ echo   Please check the Data Backup section on the form, is it complete?
 echo.
 set /p select=(yes or no):
 echo.
-if "%select%"=="yes" echo   Thanks for checking! && goto _continue2
-if "%select%"=="YES" echo   Thanks for checking! && goto _continue2
-if "%select%"=="no" echo   Please go over and ensure each step is complete. && goto _continue2
-if "%select%"=="NO" echo   Please go over and ensure each step is complete. && goto _continue2
+if "%select%"=="yes" echo   Thanks for checking!
+if "%select%"=="YES" echo   Thanks for checking!
+if "%select%"=="no" echo   Please go over and ensure each step is complete.
+if "%select%"=="NO" echo   Please go over and ensure each step is complete.
 goto _backup 
-
-:: =================================================
-:: Looking for Old Tools
-:: =================================================
-:_continue2
-if EXIST "%USERPROFILE%\Desktop\ComboFix.exe" (
-    del /F "%USERPROFILE%\Desktop\ComboFix.exe"
-    )
-
-if EXIST "%USERPROFILE%\Desktop\HDTune.exe" (
-    del /F "%USERPROFILE%\Desktop\HDTune.exe"
-    )
-    
-if EXIST "%USERPROFILE%\Desktop\prime95.exe" (
-    del /F "%USERPROFILE%\Desktop\prime95.exe"
-    )
-    
-if EXIST "%USERPROFILE%\Desktop\prime95_64.exe" (
-    del /F "%USERPROFILE%\Desktop\prime95_64.exe"
-    )
-    
-if EXIST "%USERPROFILE%\Desktop\unstopcp.exe" (
-    del /F "%USERPROFILE%\Desktop\unstopcp.exe"
-    )
-
-if EXIST "%USERPROFILE%\Desktop\autovirus.exe" (
-    del /F "%USERPROFILE%\Desktop\autovirus.exe"
-    )
-    
-if EXIST "%USERPROFILE%\Desktop\checkout.exe" (
-    del /F "%USERPROFILE%\Desktop\checkout.exe"
-    )
-    
-if EXIST "%USERPROFILE%\Desktop\defaultprograms.exe" (
-    del /F "%USERPROFILE%\Desktop\defaultprograms.exe"
-    )
-echo.
-pause
-cls
 
 :: =================================================
 :: Restart Computer
