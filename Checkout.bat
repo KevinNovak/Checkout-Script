@@ -3,12 +3,11 @@
 color f0
 title Checkout Steps Automator
 
-rem =================================================
-rem Detect OS 
-rem =================================================
+:: =================================================
+:: Detect OS 
+:: =================================================
 
 setLocal EnableDelayedExpansion
-
 for /f "tokens=* USEBACKQ" %%f in (`ver`) do set versionOutput=%%f
 
 if not "x!versionOutput:Version 10.0=!"=="x%versionOutput%" (
@@ -52,7 +51,7 @@ goto _error
 
 :_vista7
 
-rem Detect OS Bit Type
+:: Detect OS Bit Type
 
 for /f "tokens=3" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROCESSOR_ARCHITECTURE') do set bit=%%i
 
@@ -64,7 +63,7 @@ if "%bit%"=="x86" (
 
 :_vista7only
 
-rem Detect OS Bit Type
+:: Detect OS Bit Type
 
 for /f "tokens=3" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROCESSOR_ARCHITECTURE') do set bit=%%i
 
@@ -86,11 +85,11 @@ cls
 goto _steps
 
 :_steps
-rem =================================================
-rem Start checkout steps
-rem =================================================
+:: =================================================
+:: Start checkout steps
+:: =================================================
 
-rem Eject CD drive
+:: Eject CD drive
 echo.
 echo Please check the optical drive for any PE CD's . . .
 echo.
@@ -102,7 +101,7 @@ ping -n 3 127.0.0.1 > nul
 pause 
 cls
 
-rem Check Windows activation
+:: Check Windows activation
 echo.
 echo.
 echo Checking Activation Status . . .
@@ -119,7 +118,7 @@ start slmgr.vbs -xpr
 pause
 cls
 
-rem Launch Windows Updates
+:: Launch Windows Updates
 echo.
 echo Check for Windows Updates . . .
 echo.
@@ -144,7 +143,7 @@ pause
 cls
 goto _items
 :_items
-rem Display dialog
+:: Display dialog
 cls
 echo.
 echo Are all of the user's checked in items here? (Power adapter, bag, CD's)
@@ -166,7 +165,7 @@ echo.
 echo.
 pause
 cls
-rem Launch two IE windows with provided URLs
+:: Launch two IE windows with provided URLs
 echo.
 echo Test browsers for working Java and Flash . . .
 ping -n 2 127.0.0.1 > nul
@@ -182,7 +181,7 @@ ping -n 3 127.0.0.1 > nul
 pause
 cls
 
-rem Display dialog
+:: Display dialog
 echo.
 echo Checking Graphics and Sound . . . 
 echo.
@@ -215,7 +214,7 @@ echo.
 pause
 cls
 
-rem Launch device manager
+:: Launch device manager
 echo.
 echo Check that all drivers are installed . . .
 echo.
@@ -231,7 +230,7 @@ echo.
 pause
 cls
 
-rem Check if MSE is installed or Defender Service is Running on Windows 8
+:: Check if MSE is installed or Defender Service is Running on Windows 8
 echo.
 echo Checking if Microsoft Security Essentials is installed . . .
 echo.
@@ -253,7 +252,7 @@ pause
 cls
 
 :_net
-rem Lauch network connections
+:: Lauch network connections
 echo.
 echo Ensure wireless/wired networking is operational.
 echo.
@@ -270,7 +269,7 @@ pause
 cls
 
 :_backup
-rem Display dialog
+:: Display dialog
 cls
 echo.
 echo Please check the Data Backup section on the form, is it complete?
@@ -291,7 +290,7 @@ goto _backup
 
 :_continue2 
 
-rem Looking for and removing our tools if accidentally left on the user's desktop
+:: Looking for and removing our tools if accidentally left on the user's desktop
 
 if EXIST "%USERPROFILE%\Desktop\ComboFix.exe" (
     del /F "%USERPROFILE%\Desktop\ComboFix.exe"
@@ -331,7 +330,7 @@ echo.
 echo.
 pause
 cls
-rem Restart Computer
+:: Restart Computer
 echo.
 echo Please re-start the computer to ensure it boots up properly.
 echo.
@@ -343,9 +342,9 @@ cls
 goto _done
 
 :_done
-rem =================================================
-rem Done
-rem =================================================
+:: =================================================
+:: Done
+:: =================================================
 
 echo.
 echo  Finished!
