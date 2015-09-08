@@ -214,7 +214,7 @@ set /p input=%BS%  Did you hear it? (yes/no):
 if "%input%"=="yes" goto soundend
 :soundstart
 echo   Playing a test sound:
-%myfiles%\sWavPlayer.exe %myfiles%\marimba.wav
+%myfiles%\sWavPlayer.exe %myfiles%\johncena.wav
 set input=
 set /p input=%BS%  Did you hear it? (yes/no): 
 if "%input%"=="yes" goto soundend
@@ -263,6 +263,7 @@ goto _restart
 :: Restart Computer
 :: =================================================
 :_restart
+echo.
 echo   The checkout is now complete.
 echo.
 set /p input=%BS%  Would you like to restart? (yes/no): 
