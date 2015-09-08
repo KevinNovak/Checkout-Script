@@ -47,7 +47,7 @@ goto _error
 
 :_select
 echo.
-echo   The Checkout Utility will run through the checkout procedures.
+echo   The checkout utility will run through the checkout procedures
 echo.
 pause
 cls
@@ -58,7 +58,8 @@ goto _eject
 :: =================================================
 :_eject
 echo.
-echo   Please check the optical drive for any PE CD's . . .
+echo   ------ CDs are removed ------
+echo   Ejecting CD/DVD Drive:
 echo.
 %myfiles%\wizmo.exe quiet open
 pause 
@@ -70,7 +71,8 @@ goto _activate
 :: =================================================
 :_activate
 echo.
-echo   Checking Activation Status . . .
+echo   ------ OS and Office activated ------
+echo   Checking OS status:
 echo.
 if "%operatingSystem%"=="xp" (
     start oobe/msoobe /a
@@ -86,9 +88,9 @@ goto _update
 :: =================================================
 :_update
 echo.
-echo   Check for Windows Updates . . .
+echo   ------ Updates, AV, default programs installed ------
+echo   Updates - Launching Windows Update:
 echo.
-echo   Launching Windows Update . . . 
 if "%operatingSystem%"=="xp" (
     @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" update.microsoft.com
 ) 
