@@ -116,7 +116,6 @@ goto _items
 :: Check for User's Items
 :: =================================================
 :_items
-cls
 echo.
 echo   ------ User's items collected (Power, CDs, etc.) ------
 echo   Have you collected all of the users items?
@@ -212,7 +211,7 @@ echo   Sound - Playing a test sound:
 echo.
 echo   Ensure that you were able to hear the sample sound.
 echo.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _backup
 
@@ -220,16 +219,18 @@ goto _backup
 :: Backup
 :: =================================================
 :_backup
+echo   ------ Data Backup/Recovery section is complete ------
+:datastart
+set input=
+set /p input=%BS%  Has the users data been restored or N/A? (yes/no): 
+if %input%==yes goto backupend
+goto backupstart
+
+:backupend
 echo.
-echo   Please check the Data Backup section on the form, is it complete?
+echo %BS%  Thanks for checking!
 echo.
-set /p select=(yes or no):
-echo.
-if "%select%"=="yes" echo   Thanks for checking!
-if "%select%"=="YES" echo   Thanks for checking!
-if "%select%"=="no" echo   Please go over and ensure each step is complete.
-if "%select%"=="NO" echo   Please go over and ensure each step is complete.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _network
 
@@ -263,7 +264,7 @@ goto _done
 :: =================================================
 :_done
 echo.
-echo   The checkout is now complete.`n"
+echo   The checkout is now complete.
 echo.
 
 set /p foo="Press ENTER to exit."
