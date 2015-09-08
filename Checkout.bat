@@ -43,15 +43,12 @@ if not "x!versionOutput:Version 5.1=!"=="x%versionOutput%" (
     set operatingSystem=xp
     goto _select
 )
-
 endlocal
 
 goto _error
 
-:_vista7
-
 :: Detect OS Bit Type
-
+:_vista7
 for /f "tokens=3" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROCESSOR_ARCHITECTURE') do set bit=%%i
 
 if "%bit%"=="x86" (
@@ -60,10 +57,8 @@ if "%bit%"=="x86" (
     set bit=64
 )
 
-:_vista7only
-
 :: Detect OS Bit Type
-
+:_vista7only
 for /f "tokens=3" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROCESSOR_ARCHITECTURE') do set bit=%%i
 
 if "%bit%"=="x86" (
@@ -83,11 +78,10 @@ pause
 cls
 goto _steps
 
-:_steps
-
 :: =================================================
 :: Eject CD Drive
 :: =================================================
+:_steps
 echo.
 echo Please check the optical drive for any PE CD's . . .
 echo.
@@ -304,14 +298,12 @@ if "%select%"=="yes" echo Thanks for checking! && goto _continue2
 if "%select%"=="YES" echo Thanks for checking! && goto _continue2
 if "%select%"=="no" echo Please go over and ensure each step is complete. && goto _continue2
 if "%select%"=="NO" echo Please go over and ensure each step is complete. && goto _continue2
-goto _backup
-
-:_continue2 
+goto _backup 
 
 :: =================================================
 :: Looking for Old Tools
 :: =================================================
-
+:_continue2
 if EXIST "%USERPROFILE%\Desktop\ComboFix.exe" (
     del /F "%USERPROFILE%\Desktop\ComboFix.exe"
     )
@@ -343,13 +335,12 @@ if EXIST "%USERPROFILE%\Desktop\checkout.exe" (
 if EXIST "%USERPROFILE%\Desktop\defaultprograms.exe" (
     del /F "%USERPROFILE%\Desktop\defaultprograms.exe"
     )
-
-
 echo.
 echo.
 echo.
 pause
 cls
+
 :: =================================================
 :: Restart Computer
 :: =================================================
@@ -363,11 +354,10 @@ cls
 
 goto _done
 
-:_done
 :: =================================================
 :: Done
 :: =================================================
-
+:_done
 echo.
 echo  Finished!
 echo.
@@ -397,4 +387,4 @@ wmic /locale:ms_409 service where (name="WinDefend") get state /value | findstr 
 )
 pause
 cls
-goto _net   
+goto _net
