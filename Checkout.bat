@@ -1,7 +1,7 @@
 @echo off
 
 color f0
-title Checkout Steps Automator
+title Checkout Utility
 
 :: =================================================
 :: Detect OS 
@@ -46,26 +46,6 @@ if not "x!versionOutput:Version 5.1=!"=="x%versionOutput%" (
 endlocal
 
 goto _error
-
-:: Detect OS Bit Type
-:_vista7
-for /f "tokens=3" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROCESSOR_ARCHITECTURE') do set bit=%%i
-
-if "%bit%"=="x86" (
-    set bit=32
-) else ( 
-    set bit=64
-)
-
-:: Detect OS Bit Type
-:_vista7only
-for /f "tokens=3" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROCESSOR_ARCHITECTURE') do set bit=%%i
-
-if "%bit%"=="x86" (
-    set bit=32
-) else ( 
-    set bit=64
-)
 
 :_select
 echo.
