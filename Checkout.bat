@@ -6,7 +6,6 @@ title Checkout Steps Automator
 :: =================================================
 :: Detect OS 
 :: =================================================
-
 setLocal EnableDelayedExpansion
 for /f "tokens=* USEBACKQ" %%f in (`ver`) do set versionOutput=%%f
 
@@ -85,11 +84,10 @@ cls
 goto _steps
 
 :_steps
-:: =================================================
-:: Start checkout steps
-:: =================================================
 
-:: Eject CD drive
+:: =================================================
+:: Eject CD Drive
+:: =================================================
 echo.
 echo Please check the optical drive for any PE CD's . . .
 echo.
@@ -101,7 +99,9 @@ ping -n 3 127.0.0.1 > nul
 pause 
 cls
 
-:: Check Windows activation
+:: =================================================
+:: Windows Activation
+:: =================================================
 echo.
 echo.
 echo Checking Activation Status . . .
@@ -118,7 +118,9 @@ start slmgr.vbs -xpr
 pause
 cls
 
-:: Launch Windows Updates
+:: =================================================
+:: Windows Updates
+:: =================================================
 echo.
 echo Check for Windows Updates . . .
 echo.
@@ -142,8 +144,11 @@ echo.
 pause 
 cls
 goto _items
+
+:: =================================================
+:: Check for User's Items
+:: =================================================
 :_items
-:: Display dialog
 cls
 echo.
 echo Are all of the user's checked in items here? (Power adapter, bag, CD's)
@@ -165,7 +170,10 @@ echo.
 echo.
 pause
 cls
-:: Launch two IE windows with provided URLs
+
+:: =================================================
+:: Check Java and Flash
+:: =================================================
 echo.
 echo Test browsers for working Java and Flash . . .
 ping -n 2 127.0.0.1 > nul
@@ -181,7 +189,9 @@ ping -n 3 127.0.0.1 > nul
 pause
 cls
 
-:: Display dialog
+:: =================================================
+:: Check Graphics and Sound
+:: =================================================
 echo.
 echo Checking Graphics and Sound . . . 
 echo.
@@ -214,7 +224,9 @@ echo.
 pause
 cls
 
-:: Launch device manager
+:: =================================================
+:: Check Drivers
+:: =================================================
 echo.
 echo Check that all drivers are installed . . .
 echo.
@@ -230,7 +242,9 @@ echo.
 pause
 cls
 
-:: Check if MSE is installed or Defender Service is Running on Windows 8
+:: =================================================
+:: Check MSSE and Defender
+:: =================================================
 echo.
 echo Checking if Microsoft Security Essentials is installed . . .
 echo.
@@ -251,8 +265,10 @@ echo.
 pause
 cls
 
+:: =================================================
+:: Check Internet Connections
+:: =================================================
 :_net
-:: Lauch network connections
 echo.
 echo Ensure wireless/wired networking is operational.
 echo.
@@ -268,8 +284,10 @@ ncpa.cpl
 pause
 cls
 
+:: =================================================
+:: Backup
+:: =================================================
 :_backup
-:: Display dialog
 cls
 echo.
 echo Please check the Data Backup section on the form, is it complete?
@@ -290,7 +308,9 @@ goto _backup
 
 :_continue2 
 
-:: Looking for and removing our tools if accidentally left on the user's desktop
+:: =================================================
+:: Looking for Old Tools
+:: =================================================
 
 if EXIST "%USERPROFILE%\Desktop\ComboFix.exe" (
     del /F "%USERPROFILE%\Desktop\ComboFix.exe"
@@ -330,7 +350,9 @@ echo.
 echo.
 pause
 cls
+:: =================================================
 :: Restart Computer
+:: =================================================
 echo.
 echo Please re-start the computer to ensure it boots up properly.
 echo.
