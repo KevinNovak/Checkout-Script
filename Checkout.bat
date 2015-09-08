@@ -56,19 +56,18 @@ echo.
 echo.
 pause
 cls
-goto _steps
+goto _eject
 
 :: =================================================
 :: Eject CD Drive
 :: =================================================
-:_steps
+:_eject
 echo.
 echo Please check the optical drive for any PE CD's . . .
 echo.
 echo.
 echo.
 echo.
-ping -n 3 127.0.0.1 > nul
 %myfiles%\wizmo.exe quiet open
 pause 
 cls
@@ -83,11 +82,10 @@ echo.
 echo.
 echo.
 echo.
-ping -n 3 127.0.0.1 > nul
-    if "%operatingSystem%"=="xp" (
+if "%operatingSystem%"=="xp" (
     start oobe/msoobe /a
 ) else ( 
-start slmgr.vbs -xpr
+    start slmgr.vbs -xpr
 )
 pause
 cls
@@ -102,7 +100,6 @@ echo.
 echo.
 echo.
 echo                Launching Windows Update . . . 
-ping -n 3 127.0.0.1 > nul
 if "%operatingSystem%"=="xp" (
     @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" update.microsoft.com
 ) 
@@ -150,14 +147,12 @@ cls
 :: =================================================
 echo.
 echo Test browsers for working Java and Flash . . .
-ping -n 2 127.0.0.1 > nul
 echo.
 echo.
 echo.
 echo.
 echo                Launching Internet Explorer . . .
 echo.
-ping -n 3 127.0.0.1 > nul
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://youtu.be/SDmbGrQqWog
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
 pause
@@ -171,7 +166,6 @@ echo Checking Graphics and Sound . . .
 echo.
 echo.
 echo.
-ping -n 3 127.0.0.1 > nul
 echo The Current Screen Resolution is :
 echo.
 echo.
@@ -207,7 +201,6 @@ echo.
 echo.
 echo.
 echo                Launching Device Manager . . .
-ping -n 3 127.0.0.1 > nul
 echo.
 echo.
 echo.
@@ -224,7 +217,6 @@ echo Checking if Microsoft Security Essentials is installed . . .
 echo.
 echo.
 echo.
-ping -n 3 127.0.0.1 > nul
 echo.
 if "%operatingSystem%"=="eight" goto _mse8
     
@@ -250,7 +242,6 @@ echo.
 echo.
 echo.
 echo                Launching Network Connections . . . 
-ping -n 3 127.0.0.1 > nul
 echo.
 echo.
 echo.
