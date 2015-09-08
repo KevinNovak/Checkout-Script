@@ -118,15 +118,17 @@ goto _items
 :_items
 echo.
 echo   ------ User's items collected (Power, CDs, etc.) ------
-echo   Have you collected all of the users items?
-set /p select=(yes or no):
+:itemsstart
+set input=
+set /p input=%BS%  Have you collected all of the users items? (yes/no): 
+if "%input%"=="yes" goto itemsend
+goto itemsstart
+
+:itemsend
 echo.
-if "%select%"=="yes" echo   Thanks for checking!
-if "%select%"=="YES" echo   Thanks for checking!
-if "%select%"=="no" echo   Please gather all user's items.
-if "%select%"=="NO" echo   Please gather all user's items.
+echo %BS%  Thanks for checking!
 echo.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _flash
 
@@ -180,7 +182,6 @@ goto _drivers
 echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Drivers - Launching Device Manager:
-echo.
 mmc devmgmt.msc
 echo.
 set /p var=%BS%  Press Enter to Continue:  
@@ -194,8 +195,8 @@ goto _graphics
 echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Graphics - Getting Screen Resolution:
-echo.
 %myfiles%\Qres.exe /S | find "bits"
+echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
 goto _sound
@@ -208,10 +209,20 @@ echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Sound - Playing a test sound:
 %myfiles%\sWavPlayer.exe %myfiles%\marimba.wav
+set input=
+set /p input=%BS%  Did you hear it? (yes/no): 
+if "%input%"=="yes" goto soundend
+:soundstart
+echo   Playing a test sound:
+%myfiles%\sWavPlayer.exe %myfiles%\marimba.wav
+set input=
+set /p input=%BS%  Did you hear it? (yes/no): 
+if "%input%"=="yes" goto soundend
+goto soundstart
+
+:soundend
 echo.
-echo   Ensure that you were able to hear the sample sound.
-echo.
-set /p var=%BS%  Press Enter to Continue: 
+set /p var=%BS%  Press Enter to Continue:  
 cls
 goto _backup
 
@@ -219,11 +230,12 @@ goto _backup
 :: Backup
 :: =================================================
 :_backup
+echo.
 echo   ------ Data Backup/Recovery section is complete ------
-:datastart
+:backupstart
 set input=
 set /p input=%BS%  Has the users data been restored or N/A? (yes/no): 
-if %input%==yes goto backupend
+if "%input%"=="yes" goto backupend
 goto backupstart
 
 :backupend
