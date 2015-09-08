@@ -239,7 +239,7 @@ goto _network
 :_network
 echo.
 echo   ------ Wireless and/or Wired network working ------"
-echo   Launching Network Connections:"
+echo   Launching Network Connections:
 echo.
 ncpa.cpl
 set /p var=%BS%  Press Enter to Continue:  
