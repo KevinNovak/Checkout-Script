@@ -210,7 +210,8 @@ echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Graphics - Getting Screen Resolution:
 rem Wait 800
-%myfiles%\Qres.exe /S | find "bits"
+FOR /F "delims=" %%i IN ('%myfiles%\Qres.exe /S') DO set screenInfo=%%i
+echo     %screenInfo%
 rem Wait 800
 echo.
 set /p var=%BS%  Press Enter to Continue:  
