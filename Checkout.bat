@@ -110,7 +110,7 @@ goto _items
 :_items
 cls
 echo.
-echo   Are all of the user's checked in items here? (Power adapter, bag, CD's)
+echo   ------ User's items collected (Power, CDs, etc.) ------
 echo.
 set /p select=(yes or no):
 echo.
@@ -128,12 +128,19 @@ goto _java
 :: =================================================
 :_java
 echo.
-echo   Test browsers for working Java and Flash . . .
-echo.
-echo   Launching Internet Explorer . . .
-echo.
+echo   ------ Browsers working: Search, Flash, Java ------
+echo   Flash - Launching a test video:
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://youtu.be/SDmbGrQqWog
+echo.
+pause
+cls
+
+echo.
+echo   ------ Browsers working: Search, Flash, Java ------
+echo   Java - Launching java verification:
+echo.
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
+echo.
 pause
 cls
 goto _graphics
@@ -183,7 +190,8 @@ goto _virus
 :: =================================================
 :_virus
 echo.
-echo   Checking if Microsoft Security Essentials is installed . . .
+echo   ------ Updates, AV, default programs installed ------
+echo   AV - Installed AntiVirus:
 echo.
 if "%operatingSystem%"=="eight" goto _mse8
     
