@@ -69,10 +69,12 @@ echo.
 %myfiles%\wizmo.exe quiet open
 pause 
 cls
+goto _activate
 
 :: =================================================
 :: Windows Activation
 :: =================================================
+:_activate
 echo.
 echo.
 echo Checking Activation Status . . .
@@ -87,10 +89,12 @@ if "%operatingSystem%"=="xp" (
 )
 pause
 cls
+goto _update
 
 :: =================================================
 :: Windows Updates
 :: =================================================
+:_update
 echo.
 echo Check for Windows Updates . . .
 echo.
@@ -132,17 +136,18 @@ if "%select%"=="yes" echo Thanks for checking! && goto _continue
 if "%select%"=="YES" echo Thanks for checking! && goto _continue
 if "%select%"=="no" echo Please gather all user's items. && goto _continue
 if "%select%"=="NO" echo Please gather all user's items. && goto _continue
-goto _items
-
-:_continue  
 echo.
 echo.
 pause
 cls
+goto _java
+
+
 
 :: =================================================
 :: Check Java and Flash
 :: =================================================
+:_java
 echo.
 echo Test browsers for working Java and Flash . . .
 echo.
@@ -155,10 +160,12 @@ echo.
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
 pause
 cls
+goto _graphics
 
 :: =================================================
 :: Check Graphics and Sound
 :: =================================================
+:_graphics
 echo.
 echo Checking Graphics and Sound . . . 
 echo.
@@ -189,10 +196,12 @@ echo Ensure that you were able to hear the sample sound.
 echo.
 pause
 cls
+goto _drivers
 
 :: =================================================
 :: Check Drivers
 :: =================================================
+:_drivers
 echo.
 echo Check that all drivers are installed . . .
 echo.
@@ -206,10 +215,12 @@ mmc devmgmt.msc
 echo.
 pause
 cls
+goto_virus
 
 :: =================================================
 :: Check MSSE and Defender
 :: =================================================
+:_virus
 echo.
 echo Checking if Microsoft Security Essentials is installed . . .
 echo.
@@ -228,6 +239,7 @@ echo.
 echo.
 pause
 cls
+goto _net
 
 :: =================================================
 :: Check Internet Connections
@@ -246,6 +258,7 @@ echo.
 ncpa.cpl
 pause
 cls
+goto _backup
 
 :: =================================================
 :: Backup
