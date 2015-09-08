@@ -1,6 +1,5 @@
 @echo off
 
-color f0
 title Checkout Utility
 
 :: =================================================
@@ -44,12 +43,11 @@ if not "x!versionOutput:Version 5.1=!"=="x%versionOutput%" (
     goto _select
 )
 endlocal
-
 goto _error
 
 :_select
 echo.
-echo                Checkout Steps Automator
+echo   The Checkout Utility will run through the checkout procedures.
 echo.
 echo.
 echo.
