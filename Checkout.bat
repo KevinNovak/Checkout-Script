@@ -66,8 +66,10 @@ goto _eject
 echo.
 echo   ------ CDs are removed ------
 echo   Ejecting CD/DVD Drive:
-echo.
+rem Wait 800
 %myfiles%\wizmo.exe quiet open
+rem Wait 800
+echo.
 set /p var=%BS%  Press Enter to Continue:   
 cls
 goto _update
@@ -79,7 +81,7 @@ goto _update
 echo.
 echo   ------ Updates, AV, default programs installed ------
 echo   Updates - Launching Windows Update:
-echo.
+rem Wait 800
 if "%operatingSystem%"=="xp" (
     @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" update.microsoft.com
 ) 
@@ -88,6 +90,8 @@ if "%operatingSystem%"=="ten" (
 ) else ( 
     wuapp.exe
 )
+rem Wait 800
+echo.
 set /p var=%BS%  Press Enter to Continue:   
 cls
 goto _virus
@@ -100,6 +104,7 @@ echo.
 echo   ------ Updates, AV, default programs installed ------
 echo   AV - Installed AntiVirus:
 echo.
+rem Wait 800
 if "%operatingSystem%"=="eight" goto _mse8
     
 if EXIST "%ProgramFiles%\Microsoft Security Client\" (
@@ -107,6 +112,7 @@ if EXIST "%ProgramFiles%\Microsoft Security Client\" (
     )   else (
         echo   Microsoft Security Essentials is NOT installed!
     )
+rem Wait 800
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -139,7 +145,9 @@ goto _flash
 echo.
 echo   ------ Browsers working: Search, Flash, Java ------
 echo   Java - Launching java verification:
+rem Wait 800
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
+rem Wait 800
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -152,7 +160,9 @@ goto _java
 echo.
 echo   ------ Browsers working: Search, Flash, Java ------
 echo   Flash - Launching a test video:
+rem Wait 800
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://youtu.be/SDmbGrQqWog
+rem Wait 800
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -165,12 +175,14 @@ goto _activate
 echo.
 echo   ------ OS and Office activated ------
 echo   Checking OS status:
-echo.
+rem Wait 800
 if "%operatingSystem%"=="xp" (
     start oobe/msoobe /a
 ) else ( 
     start slmgr.vbs -xpr
 )
+rem Wait 800
+echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
 goto _drivers
@@ -182,7 +194,9 @@ goto _drivers
 echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Drivers - Launching Device Manager:
+rem Wait 800
 mmc devmgmt.msc
+rem Wait 800
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -195,7 +209,9 @@ goto _graphics
 echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Graphics - Getting Screen Resolution:
+rem Wait 800
 %myfiles%\Qres.exe /S | find "bits"
+rem Wait 800
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -208,6 +224,7 @@ goto _sound
 echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Sound - Playing a test sound:
+rem Wait 500
 %myfiles%\sWavPlayer.exe %myfiles%\marimba.wav
 set input=
 set /p input=%BS%  Did you hear it? (yes/no): 
@@ -254,7 +271,9 @@ echo.
 echo   ------ Wireless and/or Wired network working ------"
 echo   Launching Network Connections:
 echo.
+rem Wait 800
 ncpa.cpl
+rem Wait 800
 set /p var=%BS%  Press Enter to Continue:  
 cls
 goto _restart
