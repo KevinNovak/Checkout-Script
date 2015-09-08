@@ -263,37 +263,16 @@ goto _restart
 :: Restart Computer
 :: =================================================
 :_restart
-echo.
-echo   Please re-start the computer to ensure it boots up properly.
-echo.
-set /p var=%BS%  Press Enter to Continue:  
-cls
-
-goto _done
-
-:: =================================================
-:: Done
-:: =================================================
-:_done
-echo.
 echo   The checkout is now complete.
 echo.
-
-set /p foo="Press ENTER to exit."
-
- shutdown -r -t 4 -c "Your computer will restart momentarily"
-
-goto _end
-
-:_end
-
-rmdir /s /q "../checkout"
+set /p input=%BS%  Would you like to restart? (yes/no): 
+if "%input%"=="yes" shutdown -r -t 4 -c "Your computer will restart momentarily"
 exit
 
 :_error
 echo   No Valid OS Detected!
-set /p var=%BS%  Press Enter to Continue:  
-goto _end
+rem Wait 5000 
+exit
 
 :_mse8
 wmic /locale:ms_409 service where (name="WinDefend") get state /value | findstr State=Running
