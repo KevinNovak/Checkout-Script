@@ -104,7 +104,11 @@ echo.
 echo   ------ Updates, AV, default programs installed ------
 echo   AV - Installed AntiVirus:
 ping 1.1.1.1 -n 1 -w 800 > nul
-control wscui.cpl
+if not "%operatingSystem%"=="xp" (
+    start control wscui.cpl
+) else (
+    echo     AntiVirus cannot be detected.
+)
 ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
