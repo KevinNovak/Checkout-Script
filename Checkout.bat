@@ -66,9 +66,9 @@ goto _eject
 echo.
 echo   ------ CDs are removed ------
 echo   Ejecting CD/DVD Drive:
-rem Wait 600
-%myfiles%\wizmo.exe quiet open
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
+wizmo.exe quiet open
+ping 1.1.1.1 -n 1 -w 600 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:   
 cls
@@ -81,7 +81,7 @@ goto _update
 echo.
 echo   ------ Updates, AV, default programs installed ------
 echo   Updates - Launching Windows Update:
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 if "%operatingSystem%"=="xp" (
     @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" update.microsoft.com
 ) 
@@ -90,7 +90,7 @@ if "%operatingSystem%"=="ten" (
 ) else ( 
     wuapp.exe
 )
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:   
 cls
@@ -100,21 +100,6 @@ goto _virus
 :: Check MSSE and Defender
 :: =================================================
 :_virus
-echo.
-echo   ------ Updates, AV, default programs installed ------
-echo   AV - Installed AntiVirus:
-rem Wait 600
-if "%operatingSystem%"=="eight" goto _mse8
-    
-if EXIST "%ProgramFiles%\Microsoft Security Client\" (
-        echo     Microsoft Security Essentials is installed!
-    )   else (
-        echo     Microsoft Security Essentials is NOT installed!
-    )
-rem Wait 600
-echo.
-set /p var=%BS%  Press Enter to Continue:  
-cls
 goto _items
 
 :: =================================================
@@ -144,9 +129,9 @@ goto _flash
 echo.
 echo   ------ Browsers working: Search, Flash, Java ------
 echo   Java - Launching java verification:
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -159,9 +144,9 @@ goto _java
 echo.
 echo   ------ Browsers working: Search, Flash, Java ------
 echo   Flash - Launching a test video:
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://youtu.be/SDmbGrQqWog
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -174,13 +159,13 @@ goto _activate
 echo.
 echo   ------ OS and Office activated ------
 echo   Checking OS status:
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 if "%operatingSystem%"=="xp" (
     start oobe/msoobe /a
 ) else ( 
     start slmgr.vbs -xpr
 )
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -193,9 +178,9 @@ goto _drivers
 echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Drivers - Launching Device Manager:
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 mmc devmgmt.msc
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -208,10 +193,10 @@ goto _graphics
 echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Graphics - Getting Screen Resolution:
-rem Wait 600
-FOR /F "delims=" %%i IN ('%myfiles%\Qres.exe /S') DO set screenInfo=%%i
+ping 1.1.1.1 -n 1 -w 600 > nul
+FOR /F "delims=" %%i IN ('Qres.exe /S') DO set screenInfo=%%i
 echo     %screenInfo%
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -224,14 +209,14 @@ goto _sound
 echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Sound - Playing a test sound:
-rem Wait 100
-%myfiles%\sWavPlayer.exe %myfiles%\marimba.wav
+ping 1.1.1.1 -n 1 -w 100 > nul
+sWavPlayer.exe marimba.wav
 set input=
 set /p input=%BS%  Did you hear it? (yes/no): 
 if "%input%"=="yes" goto soundend
 :soundstart
 echo   Playing a test sound:
-%myfiles%\sWavPlayer.exe %myfiles%\johncena.wav
+sWavPlayer.exe johncena.wav
 set input=
 set /p input=%BS%  Did you hear it? (yes/no): 
 if "%input%"=="yes" goto soundend
@@ -271,9 +256,9 @@ echo.
 echo   ------ Wireless and/or Wired network working ------"
 echo   Launching Network Connections:
 echo.
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 ncpa.cpl
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 600 > nul
 set /p var=%BS%  Press Enter to Continue:  
 cls
 goto _original
@@ -311,16 +296,5 @@ exit
 
 :_error
 echo   No Valid OS Detected!
-rem Wait 5000 
+ping 1.1.1.1 -n 1 -w 5000 > nul
 exit
-
-:_mse8
-wmic /locale:ms_409 service where (name="WinDefend") get state /value | findstr State=Running
-    if %ErrorLevel% EQU 0 (
-        echo "  Windows Defender (MSE) is Running!"
-) else (
-        echo "  Windows Defender (MSE) is NOT running!"
-)
-set /p var=%BS%  Press Enter to Continue:  
-cls
-goto _net
