@@ -97,9 +97,19 @@ cls
 goto _virus
 
 :: =================================================
-:: Check MSSE and Defender
+:: Check Antivirus
 :: =================================================
 :_virus
+echo.
+echo   ------ Updates, AV, default programs installed ------
+echo   AV - Installed AntiVirus:
+rem Wait 600
+control wscui.cpl
+rem Wait 600
+echo.
+set /p var=%BS%  Press Enter to Continue:  
+cls
+control wscui.cpl
 goto _items
 
 :: =================================================
