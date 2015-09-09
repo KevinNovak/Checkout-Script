@@ -1,3 +1,7 @@
+:: Checkout Utility - Runs through the checkout procedures
+:: Code by: Kevin Novak
+:: Last Edited: 9/9/2015
+
 @echo off
 
 title Checkout Utility
@@ -102,12 +106,13 @@ goto _virus
 :_virus
 echo.
 echo   ------ Updates, AV, default programs installed ------
-echo   AV - Installed AntiVirus:
+echo   AV - Launching Action Center:
 ping 1.1.1.1 -n 1 -w 800 > nul
 if not "%operatingSystem%"=="xp" (
     start control wscui.cpl
 ) else (
-    echo     AntiVirus cannot be detected.
+    echo     Action Center cannot be launched.
+    echo     Please check that an AntiVirus is running.
 )
 ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
