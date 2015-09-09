@@ -306,6 +306,9 @@ set /p input=%BS%  Would you like to restart? (yes/no):
 if "%input%"=="yes" shutdown -r -t 4 -c "Your computer will restart momentarily"
 exit
 
+:: =================================================
+:: Errors
+:: =================================================
 :_error
 echo   No Valid OS Detected!
 ping 1.1.1.1 -n 1 -w 5000 > nul
