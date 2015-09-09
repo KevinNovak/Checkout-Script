@@ -66,9 +66,9 @@ goto _eject
 echo.
 echo   ------ CDs are removed ------
 echo   Ejecting CD/DVD Drive:
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 wizmo.exe quiet open
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:   
 cls
@@ -81,7 +81,7 @@ goto _update
 echo.
 echo   ------ Updates, AV, default programs installed ------
 echo   Updates - Launching Windows Update:
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 if "%operatingSystem%"=="xp" (
     @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" update.microsoft.com
 ) 
@@ -90,7 +90,7 @@ if "%operatingSystem%"=="ten" (
 ) else ( 
     wuapp.exe
 )
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:   
 cls
@@ -103,13 +103,12 @@ goto _virus
 echo.
 echo   ------ Updates, AV, default programs installed ------
 echo   AV - Installed AntiVirus:
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 800 > nul
 control wscui.cpl
-rem Wait 600
+ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
-control wscui.cpl
 goto _items
 
 :: =================================================
@@ -139,9 +138,9 @@ goto _flash
 echo.
 echo   ------ Browsers working: Search, Flash, Java ------
 echo   Java - Launching java verification:
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -154,9 +153,9 @@ goto _java
 echo.
 echo   ------ Browsers working: Search, Flash, Java ------
 echo   Flash - Launching a test video:
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://youtu.be/SDmbGrQqWog
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -169,13 +168,12 @@ goto _activate
 echo.
 echo   ------ OS and Office activated ------
 echo   Checking OS status:
-ping 1.1.1.1 -n 1 -w 600 > nul
 if "%operatingSystem%"=="xp" (
     start oobe/msoobe /a
 ) else ( 
     start slmgr.vbs -xpr
 )
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 2000 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -188,9 +186,9 @@ goto _drivers
 echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Drivers - Launching Device Manager:
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 mmc devmgmt.msc
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -203,10 +201,10 @@ goto _graphics
 echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Graphics - Getting Screen Resolution:
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 FOR /F "delims=" %%i IN ('Qres.exe /S') DO set screenInfo=%%i
 echo     %screenInfo%
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
 set /p var=%BS%  Press Enter to Continue:  
 cls
@@ -266,9 +264,9 @@ echo.
 echo   ------ Wireless and/or Wired network working ------"
 echo   Launching Network Connections:
 echo.
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 ncpa.cpl
-ping 1.1.1.1 -n 1 -w 600 > nul
+ping 1.1.1.1 -n 1 -w 800 > nul
 set /p var=%BS%  Press Enter to Continue:  
 cls
 goto _original
