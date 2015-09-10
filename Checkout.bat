@@ -92,7 +92,7 @@ if "%operatingSystem%"=="xp" (
 if "%operatingSystem%"=="ten" (
     start ms-settings:windowsupdate
 ) else ( 
-    start wuapp.exe
+    wuapp.exe
 )
 ping 1.1.1.1 -n 1 -w 600 > nul
 echo.
