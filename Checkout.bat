@@ -180,7 +180,7 @@ echo   Checking OS status:
 if "%operatingSystem%"=="xp" (
     oobe/msoobe /a
 ) else ( 
-    slmgr.vbs -xpr
+    start /wait slmgr.vbs -xpr
 )
 ping 1.1.1.1 -n 1 -w 600 > nul
 echo.

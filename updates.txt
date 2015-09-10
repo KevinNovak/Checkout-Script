@@ -1,10 +1,10 @@
 ======================================================
 Checkout Script - Updates (tabbed items are complete)
 ======================================================
-decrease general wait times
-increase wait for checking activation
-faster startup (maybe no compression?)
+	decrease general wait times
+	(n/a)increase wait for checking activation
+(maybe fixed)faster startup (maybe no compression?)
 	remove extra spaces from press enters
-windows 7 cannot find slmgr.vbs
+(maybe fixed)windows 7 cannot find slmgr.vbs
 	quote in title of wireless
 accept na and n/a as input
