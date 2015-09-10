@@ -256,6 +256,10 @@ echo   ------ Data Backup/Recovery section is complete ------
 set input=
 set /p input=%BS%  Has the users data been restored or N/A? (yes/no): 
 if "%input%"=="yes" goto backupend
+if "%input%"=="na" goto backupend
+if "%input%"=="NA" goto backupend
+if "%input%"=="n/a" goto backupend
+if "%input%"=="N/A" goto backupend
 goto backupstart
 
 :backupend
@@ -291,6 +295,10 @@ echo   ------ Data Backup/Recovery section is complete ------
 set input=
 set /p input=%BS%  Has the users original problem been solved or N/A? (yes/no): 
 if "%input%"=="yes" goto originalend
+if "%input%"=="na" goto originalend
+if "%input%"=="NA" goto originalend
+if "%input%"=="n/a" goto originalend
+if "%input%"=="N/A" goto originalend
 goto originalstart
 
 :originalend
