@@ -227,15 +227,16 @@ echo.
 echo   ------ Drivers Installed, Graphics and Sound Working ------
 echo   Sound - Playing a test sound:
 ping 1.1.1.1 -n 1 -w 100 > nul
-sWavPlayer.exe marimba.wav
+start sWavPlayer.exe marimba.wav
+ping 1.1.1.1 -n 1 -w 600 > nul
 set input=
-set /p input=%BS%  Did you hear it? (yes/no): 
+set /p input=%BS%  Can you hear it? (yes/no): 
 if "%input%"=="yes" goto soundend
 :soundstart
 echo   Playing a test sound:
 sWavPlayer.exe johncena.wav
 set input=
-set /p input=%BS%  Did you hear it? (yes/no): 
+set /p input=%BS%  Can you hear it? (yes/no): 
 if "%input%"=="yes" goto soundend
 goto soundstart
 
