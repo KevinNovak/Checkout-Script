@@ -59,7 +59,7 @@ goto _error
 echo.
 echo   The checkout utility will run through the checkout procedures
 echo.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _eject
 
@@ -74,7 +74,7 @@ ping 1.1.1.1 -n 1 -w 800 > nul
 wizmo.exe quiet open
 ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
-set /p var=%BS%  Press Enter to Continue:   
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _update
 
@@ -96,7 +96,7 @@ if "%operatingSystem%"=="ten" (
 )
 ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
-set /p var=%BS%  Press Enter to Continue:   
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _virus
 
@@ -116,7 +116,7 @@ if not "%operatingSystem%"=="xp" (
 )
 ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _items
 
@@ -151,7 +151,7 @@ ping 1.1.1.1 -n 1 -w 800 > nul
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://java.com/en/download/installed.jsp
 ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _java
 
@@ -166,7 +166,7 @@ ping 1.1.1.1 -n 1 -w 800 > nul
 @start "" /b "%ProgramFiles%\Internet Explorer\iexplore.exe" http://youtu.be/SDmbGrQqWog
 ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _activate
 
@@ -184,7 +184,7 @@ if "%operatingSystem%"=="xp" (
 )
 ping 1.1.1.1 -n 1 -w 2000 > nul
 echo.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _drivers
 
@@ -199,7 +199,7 @@ ping 1.1.1.1 -n 1 -w 800 > nul
 mmc devmgmt.msc
 ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _graphics
 
@@ -215,7 +215,7 @@ FOR /F "delims=" %%i IN ('Qres.exe /S') DO set screenInfo=%%i
 echo     %screenInfo%
 ping 1.1.1.1 -n 1 -w 800 > nul
 echo.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _sound
 
@@ -241,7 +241,7 @@ goto soundstart
 
 :soundend
 echo.
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _backup
 
@@ -270,13 +270,13 @@ goto _network
 :: =================================================
 :_network
 echo.
-echo   ------ Wireless and/or Wired network working ------"
+echo   ------ Wireless and/or Wired network working ------
 echo   Launching Network Connections:
 echo.
 ping 1.1.1.1 -n 1 -w 800 > nul
 ncpa.cpl
 ping 1.1.1.1 -n 1 -w 800 > nul
-set /p var=%BS%  Press Enter to Continue:  
+set /p var=%BS%  Press Enter to Continue: 
 cls
 goto _original
 
