@@ -5,9 +5,9 @@ shorter wait before launch
 longer wait after launch
 	decrease general wait times
 	(n/a)increase wait for checking activation
-(maybe fixed)faster startup (maybe no compression?)
+(maybe fixed)faster startup
 	remove extra spaces from press enters
-(maybe fixed)windows 7 cannot find slmgr.vbs
+	(probably fixed)windows 7 cannot find slmgr.vbs
 	quote in title of wireless
 	accept na and n/a as input
-accept y/n as input
+	accept y/n as input
