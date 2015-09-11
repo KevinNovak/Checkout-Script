@@ -130,6 +130,7 @@ echo   ------ User's items collected (Power, CDs, etc.) ------
 set input=
 set /p input=%BS%  Have you collected all of the users items? (yes/no): 
 if "%input%"=="yes" goto itemsend
+if "%input%"=="y" goto itemsend
 goto itemsstart
 
 :itemsend
@@ -232,12 +233,14 @@ ping 1.1.1.1 -n 1 -w 600 > nul
 set input=
 set /p input=%BS%  Can you hear it? (yes/no): 
 if "%input%"=="yes" goto soundend
+if "%input%"=="y" goto soundend
 :soundstart
 echo   Playing a test sound:
 sWavPlayer.exe johncena.wav
 set input=
 set /p input=%BS%  Can you hear it? (yes/no): 
 if "%input%"=="yes" goto soundend
+if "%input%"=="y" goto soundend
 goto soundstart
 
 :soundend
@@ -256,6 +259,7 @@ echo   ------ Data Backup/Recovery section is complete ------
 set input=
 set /p input=%BS%  Has the users data been restored or N/A? (yes/no): 
 if "%input%"=="yes" goto backupend
+if "%input%"=="y" goto backupend
 if "%input%"=="na" goto backupend
 if "%input%"=="NA" goto backupend
 if "%input%"=="n/a" goto backupend
@@ -295,6 +299,7 @@ echo   ------ Data Backup/Recovery section is complete ------
 set input=
 set /p input=%BS%  Has the users original problem been solved or N/A? (yes/no): 
 if "%input%"=="yes" goto originalend
+if "%input%"=="y" goto originalend
 if "%input%"=="na" goto originalend
 if "%input%"=="NA" goto originalend
 if "%input%"=="n/a" goto originalend
@@ -318,6 +323,7 @@ echo   The checkout is now complete.
 echo.
 set /p input=%BS%  Would you like to restart? (yes/no): 
 if "%input%"=="yes" shutdown -r -t 4 -c "Your computer will restart momentarily"
+if "%input%"=="y" shutdown -r -t 4 -c "Your computer will restart momentarily"
 exit
 
 :: =================================================
