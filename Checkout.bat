@@ -1,6 +1,7 @@
 :: Checkout Utility - Runs through the checkout procedures
 :: Code by: Kevin Novak
-:: Last Edited: 9/9/2015
+:: Last Edited: 9/10/2015
+:: Version: 1.0.2.0
 
 @echo off
 
