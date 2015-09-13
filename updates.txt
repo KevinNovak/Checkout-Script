@@ -1,11 +1,12 @@
 ======================================================
 Checkout Script - Updates (tabbed items are complete)
 ======================================================
+beginning has PC info
 shorter wait before launch
 longer wait after launch
+(maybe fixed)faster startup
 	decrease general wait times
 	(n/a)increase wait for checking activation
-(maybe fixed)faster startup
 	remove extra spaces from press enters
 	(probably fixed)windows 7 cannot find slmgr.vbs
 	quote in title of wireless
