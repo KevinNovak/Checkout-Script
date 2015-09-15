@@ -1,6 +1,7 @@
 ======================================================
 Checkout Script - Updates (tabbed items are complete)
 ======================================================
+cannot leave sound field blank
 beginning has PC info
 shorter wait before launch
 longer wait after launch
