@@ -1,7 +1,7 @@
 :: Checkout Utility - Runs through the checkout procedures
 :: Code by: Kevin Novak
-:: Last Edited: 9/10/2015
-:: Version: 1.0.2.0
+:: Last Edited: 9/14/2015
+:: Version: 1.0.3.0
 
 @echo off
 
@@ -231,15 +231,20 @@ echo   Sound - Playing a test sound:
 ping 1.1.1.1 -n 1 -w 100 > nul
 start sWavPlayer.exe marimba.wav
 ping 1.1.1.1 -n 1 -w 600 > nul
+goto _soundprompt
+:_soundprompt
 set input=
 set /p input=%BS%  Can you hear it? (yes/no): 
+if "%input%"=="" goto _soundprompt
 if "%input%"=="yes" goto soundend
 if "%input%"=="y" goto soundend
 :soundstart
 echo   Playing a test sound:
-sWavPlayer.exe johncena.wav
+start sWavPlayer.exe johncena.wav
+:_soundjohn
 set input=
 set /p input=%BS%  Can you hear it? (yes/no): 
+if "%input%"=="" goto _soundjohn
 if "%input%"=="yes" goto soundend
 if "%input%"=="y" goto soundend
 goto soundstart

@@ -1,11 +1,11 @@
 ======================================================
 Checkout Script - Updates (tabbed items are complete)
 ======================================================
-cannot leave sound field blank
 beginning has PC info
 shorter wait before launch
 longer wait after launch
 (maybe fixed)faster startup
+	cannot leave sound field blank
 	decrease general wait times
 	(n/a)increase wait for checking activation
 	remove extra spaces from press enters
