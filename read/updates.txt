@@ -1,6 +1,7 @@
 ======================================================
 Checkout Script - Updates (tabbed items are complete)
 ======================================================
+change john cena sound
 beginning has PC info
 shorter wait before launch
 longer wait after launch
