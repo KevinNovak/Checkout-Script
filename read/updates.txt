@@ -1,11 +1,11 @@
 ======================================================
 Checkout Script - Updates (tabbed items are complete)
 ======================================================
-change john cena sound
 beginning has PC info
 shorter wait before launch
 longer wait after launch
 (maybe fixed)faster startup
+	change john cena sound
 	cannot leave sound field blank
 	decrease general wait times
 	(n/a)increase wait for checking activation
