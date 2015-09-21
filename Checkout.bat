@@ -1,7 +1,7 @@
 :: Checkout Utility - Runs through the checkout procedures
 :: Code by: Kevin Novak
-:: Last Edited: 9/14/2015
-:: Version: 1.0.3.0
+:: Last Edited: 9/21/2015
+:: Version: 1.0.4.0
 
 @echo off
 
@@ -240,11 +240,11 @@ if "%input%"=="yes" goto soundend
 if "%input%"=="y" goto soundend
 :soundstart
 echo   Playing a test sound:
-start sWavPlayer.exe johncena.wav
-:_soundjohn
+start sWavPlayer.exe rickroll.wav
+:_soundrickroll
 set input=
 set /p input=%BS%  Can you hear it? (yes/no): 
-if "%input%"=="" goto _soundjohn
+if "%input%"=="" goto _soundrickroll
 if "%input%"=="yes" goto soundend
 if "%input%"=="y" goto soundend
 goto soundstart
