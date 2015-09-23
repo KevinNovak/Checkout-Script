@@ -1,6 +1,9 @@
 ======================================================
 Checkout Script - Updates (tabbed items are complete)
 ======================================================
+GUI
+ask to check for an antivirus
+spit out a report at the end
 beginning has PC info
 shorter wait before launch
 longer wait after launch
